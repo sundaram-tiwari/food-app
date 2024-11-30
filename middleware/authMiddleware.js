@@ -7,7 +7,7 @@ module.exports  = async (req,res,next) =>{
             if(err){
                 return res.status(404).send({
                     success:false,
-                    message:'Un-Authorize User',
+                    message:'Un-Authorized User',
                 })
             }else{
                 req.body.id = decode.id;
