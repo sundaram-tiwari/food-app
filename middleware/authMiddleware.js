@@ -10,7 +10,7 @@ module.exports  = async (req,res,next) =>{
                     message:'Un-Authorized User',
                 })
             }else{
-                req.body.id = decode.id;
+                req.body.email = decode.email;
                 next();
             }
         })

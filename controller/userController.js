@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 //Get user info
 const getUserController = async (req, res) => {
     try {
-        const user = await userModel.findById({ _id: req.body.id });
+        const user = await userModel.findOne({ email: req.body.email});
         //validation
         if (!user) {
             res.status(500).send({
@@ -33,7 +33,7 @@ const getUserController = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const user = await userModel.findById({ _id: req.body.id });
+        const user = await userModel.findOne({ email: req.body.email });
 
         //validation
         if (!user) {
@@ -65,7 +65,8 @@ const updateUser = async (req, res) => {
 
 const updatePassword = async (req, res) => {
     try {
-        const user = await userModel.findById({ _id: req.body.id });
+        const user = await userModel.findOne({ email: req.body.email });
+
 
         const { oldPassword, newPassword } = req.body;
 
@@ -160,7 +161,7 @@ const forgetPassword = async (req, res) => {
 
 const resetPassword = async (req, res) => {
     try {
-        const { token } = req.params;
+        const token = req.headers["authorization"].split(" ")[1];
         const { password } = req.body;
 
         //validation
@@ -203,10 +204,49 @@ const resetPassword = async (req, res) => {
     }
 }
 
+const deleteUser = async (req,res) => {
+    try {
+
+        const { email } = req.body;
+        //sending delete account mail
+        const transporter = nodemailer.createTransport({
+            service:"gmail",
+            secure:true,
+            auth:{
+                user: process.env.MY_GMAIL,
+                pass: process.env.MY_PASSWORD,
+            },
+        });
+
+        const receiver = {
+            from : "sundaramtiwari04@gmail.com",
+            to : email,
+            subject : "Deleted Account",
+            text : `Your acount ${email} registered with our food-app-api has been deleted. Thank you for giving us uportunity to serve you.`
+        }
+
+        await transporter.sendMail(receiver);
+
+        const user = await userModel.findOneAndDelete({ email: email });
+        return res.status(200).send({
+            success:false,
+            message:"User Deleted Successfully"
+        })
+    } catch (error) {   
+        console.log(error)
+        res.status(500).send({
+            success:false,
+            message:'Error in delete Password API!',
+            error:error
+        })
+    }
+}
+
 module.exports = {
     getUserController,
     updateUser,
     updatePassword,
     forgetPassword,
-    resetPassword
+    resetPassword,
+    deleteUser
 }

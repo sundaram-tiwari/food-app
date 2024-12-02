@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUserController, updateUser, updatePassword, forgetPassword, resetPassword } = require('../controller/userController');
+const { getUserController, updateUser, updatePassword, forgetPassword, resetPassword, deleteUser} = require('../controller/userController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 
@@ -11,8 +11,10 @@ router.put('/updateUser',authMiddleware, updateUser);
 
 router.put('/updatePassword',authMiddleware,updatePassword);
 
-router.post('/forgetPassword',forgetPassword);
+router.post('/forgetPassword',authMiddleware,forgetPassword);
 
-router.post('/resetPassword/:token',resetPassword);
+router.post('/resetPassword',authMiddleware,resetPassword);
+
+router.delete('/deleteUser',authMiddleware,deleteUser);
 
 module.exports = router;
