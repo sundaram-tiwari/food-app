@@ -46,8 +46,7 @@ const createRestaurant = async (req, res) => {
             code,
             coords
         })
-
-        // await newRestaurant.save();
+        
         res.status(200).send({
             success: true,
             message: 'New restaurant created successfully'
