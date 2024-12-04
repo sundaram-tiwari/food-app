@@ -229,7 +229,7 @@ const deleteUser = async (req,res) => {
 
         const user = await userModel.findOneAndDelete({ email: email });
         return res.status(200).send({
-            success:false,
+            success:true,
             message:"User Deleted Successfully"
         })
     } catch (error) {   

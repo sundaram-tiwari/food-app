@@ -1,0 +1,88 @@
+[
+    {
+        "title": "Bistro Cafe",
+        "imageUrl": "https://images.unsplash.com/photo-1494346480775-936a9f0d0877?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhZmV8ZW58MHx8MHx8fDA%3D",
+        "food": [
+            {
+                "dishName": "Pasta Primavera",
+                "dishPicUrl": "https://example.com/images/pasta_primavera.jpg",
+                "price": 14.99
+            },
+            {
+                "dishName": "Margherita Pizza",
+                "dishPicUrl": "https://example.com/images/margherita_pizza.jpg",
+                "price": 12.99
+            },
+            {
+                "dishName": "Caesar Salad",
+                "dishPicUrl": "https://example.com/images/caesar_salad.jpg",
+                "price": 8.99
+            },
+            {
+                "dishName": "Cheeseburger",
+                "dishPicUrl": "https://example.com/images/cheeseburger.jpg",
+                "price": 10.99
+            }
+        ],
+        "time": "11:00 AM - 10:00 PM",
+        "pickup": true,
+        "delivery": true,
+        "isOpen": true,
+        "logourl": "/home/bbt/sundaram/backup zip/food-app-api/images",
+        "rating": 4.2,
+        "ratingCount": "254",
+        "code": "BISTRO2024",
+        "coords": {
+            "id": "restaurant_1234",
+            "lattitude": 40.7128,
+            "lattitudeDelta": 0.01,
+            "longitude": -74.0060,
+            "longitudeDelta": 0.01,
+            "address": "123 Bistro Street, New York, NY 10001",
+            "title": "Bistro Cafe"
+        }
+    },
+    {
+        "title": "Sushi House",
+        "imageUrl": "https://example.com/images/sushi_house.jpg",
+        "food": [
+            {
+                "dishName": "California Roll",
+                "dishPicUrl": "https://example.com/images/california_roll.jpg",
+                "price": 12.99
+            },
+            {
+                "dishName": "Spicy Tuna Roll",
+                "dishPicUrl": "https://example.com/images/spicy_tuna_roll.jpg",
+                "price": 14.99
+            },
+            {
+                "dishName": "Salmon Nigiri",
+                "dishPicUrl": "https://example.com/images/salmon_nigiri.jpg",
+                "price": 9.99
+            },
+            {
+                "dishName": "Tempura Shrimp",
+                "dishPicUrl": "https://example.com/images/tempura_shrimp.jpg",
+                "price": 10.99
+            }
+        ],
+        "time": "12:00 PM - 11:00 PM",
+        "pickup": true,
+        "delivery": true,
+        "isOpen": true,
+        "logourl": "https://example.com/images/sushi_logo.jpg",
+        "rating": 4.5,
+        "ratingCount": "320",
+        "code": "SUSHI2024",
+        "coords": {
+            "id": "restaurant_5678",
+            "lattitude": 34.0522,
+            "lattitudeDelta": 0.01,
+            "longitude": -118.2437,
+            "longitudeDelta": 0.01,
+            "address": "456 Sushi Avenue, Los Angeles, CA 90001",
+            "title": "Sushi House"
+        }
+    }
+]

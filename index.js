@@ -18,8 +18,10 @@ app.use(express.json());
 app.use(morgan('dev'));
 
 //route
-app.use('/api/v1/auth',require('./routes/authRoutes'))
-app.use('/api/v1/user',require('./routes/userRoutes'))
+app.use('/api/v1/auth',require('./routes/authRoutes'));
+app.use('/api/v1/user',require('./routes/userRoutes'));
+app.use('/api/v1/restaurant',require('./routes/restaurantRoutes'));
+
 
 app.get('/', (req, res) => {
     res.send("<h1> Server Started a</h1>")
