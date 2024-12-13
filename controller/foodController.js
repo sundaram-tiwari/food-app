@@ -1,4 +1,6 @@
 const foodModel = require("../model/foodModel");
+const orderModel = require("../model/orderModel");
+const userModel = require("../model/userModel");
 
 
 const createFoodController = async (req, res) => {
@@ -217,11 +219,47 @@ const deleteFood = async (req,res) => {
     }
 }
 
+const placeOrder = async (req,res) =>{
+    try {
+        const {cart} = req.body;
+        if(!cart){
+            return res.status(400).send({
+                success: false,
+                message: "Please provide your food and payment"
+            })
+        }
+        let total = 0;
+        cart.map((i) =>{
+            total += i.price;
+        })
+
+        const user = await userModel.findOne({email:req.body.email});
+        const newOrder = new orderModel({
+            food:cart,
+            payment:total,  
+            buyer: user.id
+        })
+        await newOrder.save();
+        res.status(200).send({
+            success: true,
+            message: 'Order has been placed successfully',
+            newOrder
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message: 'Error in place order API'
+        })
+    }
+}
+
 module.exports = {
     createFoodController,
     getAllFood,
     getSingleFood,
     getFoodByRestaurant,
     updateFood,
-    deleteFood
+    deleteFood,
+    placeOrder
 }

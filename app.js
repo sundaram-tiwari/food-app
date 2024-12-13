@@ -26,7 +26,7 @@ app.use('/api/v1/food',require('./routes/foodRoutes'));
 
 
 app.get('/', (req, res) => {
-    res.send("<h1> Server Started a</h1>")
+    res.send("<h1> Server Started </h1>")
 });
 
 //PORT
